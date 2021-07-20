@@ -8,16 +8,19 @@ import Tours from "./Tours"
 const url = 'https://course-api.com/react-tours-project';
 function App() {
 
-  const [load, setLoading] = useState(false)
+  const [load, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
   
   const fetchTourInfo = async () => {
-    setLoading(true)
+    setLoading(true);
     try{
       const response = await fetch(url);
-      const tours =  await response.json();
-      setLoading(false);
+      const tourInfo =  await response.json();
       setTours(tours);
+      setLoading(false);
+      //setTourInfo(tours)
+       //console.log(tourInfo);
+       
     }
     catch(error){
       setLoading(false);
@@ -26,7 +29,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetchTourInfo();
+    fetchTourInfo()
   }, [])
   if(load)
   {
@@ -40,7 +43,7 @@ function App() {
 
   return (
     <main>
-      <Tours/>
+      <Tours tours={tours}/>
     </main>
 
   );

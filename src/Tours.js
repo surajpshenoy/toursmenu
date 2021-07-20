@@ -1,7 +1,7 @@
 import React from "react"
 import TourCard from "./TourCard"
 
-const Tours = ({ props }) => {
+const Tours = ({ props, removeTourHandler }) => {
     return (
 
         <section>
@@ -12,7 +12,7 @@ const Tours = ({ props }) => {
             </div>
             <div>
             {props.map((tour) => {
-                return <TourCard key={tour.id} {...tour}></TourCard>
+                return <TourCard key={tour.id} {...tour} removeTourHandler = {removeTourHandler}></TourCard>
             })}
             </div>
             

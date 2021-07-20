@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-const TourCard =({id, name, image, price, info}) => {
-const [readInfo, setReadInfo] = useState(true);
+const TourCard =({id, name, image, price, info, removeTourHandler}) => {
+const [readInfo, setReadInfo] = useState(false);
 return (
 
 <article className="single-tour">
@@ -16,9 +16,8 @@ return (
     <button onClick={() => setReadInfo(!readInfo)}>
         {readInfo? 'read less' : 'read more'}
     </button>
-    
     </p>
-    <button className="delete-btn">not interested</button>
+    <button className="delete-btn" onClick={() => removeTourHandler(id)}>not interested</button>
 </footer>
 </article>
 )
